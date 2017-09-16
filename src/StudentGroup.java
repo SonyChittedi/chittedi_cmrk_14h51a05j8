@@ -64,21 +64,43 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void addLast(Student student) {
 		// Add your implementation here
+		int i=this.students.length;
+		this.students[i]=student;
+		this.students[i+1]=null;
 	}
 
 	@Override
 	public void add(Student student, int index) {
 		// Add your implementation here
+		int i=this.students.length;
+		for(int j=i;j>index;j--)
+		this.students[j]=this.students[j-1];
+		this.students[index]=student;
+		this.students[i+1]=null;
 	}
 
 	@Override
 	public void remove(int index) {
 		// Add your implementation here
+		int i=this.students.length;
+		for(int j= index;j<i;j++)
+		this.students[j]=this.students[j+1];
+		this.students[i+1]=null;
 	}
 
 	@Override
 	public void remove(Student student) {
 		// Add your implementation here
+		int i=this.students.length;
+		int index=0;
+             for(int j=0;j<i;j++)
+		if(this.students[j].equals(student))
+		{index=j;
+		break;
+                }
+		for(int j=index;j<i;j++)
+		this.students[j]=this.students[j+1];
+		this.students[i+1]=null;
 	}
 
 	@Override
