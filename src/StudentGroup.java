@@ -1,5 +1,5 @@
 import java.util.Date;
-
+import java.lang.IllegalArgumentException;
 /**
  * A fix-sized array of students
  * array length should always be equal to the number of stored elements
@@ -26,23 +26,29 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getStudents() {
 		// Add your implementation here
-		return null;
+		return this.students;
 	}
 
 	@Override
 	public void setStudents(Student[] students) {
 		// Add your implementation here
+		this.students = students;
 	}
 
 	@Override
 	public Student getStudent(int index) {
 		// Add your implementation here
-		return null;
+		if(index < 0 || index >= this.students.length)
+			throw new IllegalArgumentException();
+		return this.students[index];
 	}
 
 	@Override
 	public void setStudent(Student student, int index) {
 		// Add your implementation here
+		if(student == null || index < 0 || index >= this.students.length)
+			throw new IllegalArgumentException();
+		this.students[index] = student;
 	}
 
 	@Override
